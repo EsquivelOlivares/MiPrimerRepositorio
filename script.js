@@ -11,6 +11,23 @@ const incrementBtn = document.getElementById('increment');
 const decrementBtn = document.getElementById('decrement');
 const resetBtn = document.getElementById('reset');
 
+// Modo oscuro
+const darkModeBtn = document.getElementById('dark-mode');
+let darkMode = false;
+
+// Función para toggle modo oscuro
+function toggleDarkMode() {
+    darkMode = !darkMode;
+    document.body.classList.toggle('dark-mode', darkMode);
+    
+    // Cambiar ícono
+    const icon = darkModeBtn.querySelector('i');
+    icon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
+    darkModeBtn.innerHTML = `<i class="${icon.className}"></i> ${darkMode ? 'Modo Claro' : 'Modo Oscuro'}`;
+    
+    // Animación
+    animateButton(darkModeBtn);
+}
 // Inicializar la aplicación
 function init() {
     updateDisplay();
@@ -46,6 +63,9 @@ function setupEventListeners() {
         setTimeout(() => {
             document.querySelector('.counter-display').style.transform = 'scale(1)';
         }, 200);
+    });
+    darkModeBtn.addEventListener('click', () => {
+        toggleDarkMode();
     });
 }
 

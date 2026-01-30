@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Clicks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-mouse-pointer"></i> Contador de Clicks</h1>
+            <p class="subtitle">Una app simple para practicar Git y GitHub</p>
+        </header>
+
+        <main>
+            <div class="counter-card">
+                <div class="counter-display">
+                    <span id="count">0</span>
+                </div>
+                
+                <div class="buttons">
+                    <button id="increment" class="btn btn-success">
+                        <i class="fas fa-plus"></i> Incrementar
+                    </button>
+                    <button id="decrement" class="btn btn-warning">
+                        <i class="fas fa-minus"></i> Decrementar
+                    </button>
+                    <button id="reset" class="btn btn-danger">
+                        <i class="fas fa-redo"></i> Reiniciar
+                    </button>
+                </div>
+                
+                <div class="stats">
+                    <p>Total histórico: <span id="history">0</span> clicks</p>
+                    <div class="progress-bar">
+                        <div id="progress" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h2><i class="fas fa-graduation-cap"></i> Comandos Git que estamos usando:</h2>
+                <div class="git-commands">
+                    <div class="command">
+                        <code>git init</code>
+                        <p>Inicializar repositorio Git</p>
+                    </div>
+                    <div class="command">
+                        <code>git add .</code>
+                        <p>Añadir todos los archivos al stage</p>
+                    </div>
+                    <div class="command">
+                        <code>git commit -m "mensaje"</code>
+                        <p>Guardar cambios con un mensaje</p>
+                    </div>
+                    <div class="command">
+                        <code>git branch</code>
+                        <p>Ver ramas existentes</p>
+                    </div>
+                    <div class="command">
+                        <code>git push</code>
+                        <p>Subir cambios a GitHub</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p><i class="fas fa-code"></i> Proyecto para aprender Git | Creado paso a paso</p>
+            <p class="footer-note">Cada botón clickeado representa un commit en Git</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

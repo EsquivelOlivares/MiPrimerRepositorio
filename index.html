@@ -34,6 +34,25 @@
                         <i class="fas fa-moon"></i> Modo Oscuro
                     </button>
                 </div>
+
+                <div class="timer-section">
+                    <h3><i class="fas fa-clock"></i> Contador Regresivo</h3>
+                    <div class="timer-display">
+                        <span id="minutes">05</span>:<span id="seconds">00</span>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="start-timer" class="btn btn-timer">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button id="pause-timer" class="btn btn-timer">
+                            <i class="fas fa-pause"></i> Pausar
+                        </button>
+                        <button id="reset-timer" class="btn btn-timer">
+                            <i class="fas fa-stop"></i> Reiniciar
+                        </button>
+                        <input type="number" id="set-minutes" min="1" max="60" value="5" placeholder="Min">
+                    </div>
+                </div>
                 
                 <div class="stats">
                     <p>Total histórico: <span id="history">0</span> clicks</p>

@@ -255,3 +255,83 @@ body.dark-mode .command code {
     background: linear-gradient(to right, #485563, #29323c);
     color: white;
 }
+
+/* Estilos para el timer */
+.timer-section {
+    background: #f1f8ff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    border: 2px solid #d0e7ff;
+}
+
+.timer-section h3 {
+    color: #0366d6;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.timer-display {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: #0366d6;
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-timer {
+    background: linear-gradient(to right, #0366d6, #28a745);
+    color: white;
+    padding: 12px 25px;
+}
+
+#set-minutes {
+    padding: 12px;
+    border: 2px solid #0366d6;
+    border-radius: 8px;
+    width: 80px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Animación cuando el tiempo se acaba */
+.timer-alert {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { background-color: #ff6b6b; }
+    50% { background-color: #ff9999; }
+    100% { background-color: #ff6b6b; }
+}
+
+/* Modo oscuro para timer */
+body.dark-mode .timer-section {
+    background: #1c2b41;
+    border-color: #2d4a7a;
+}
+
+body.dark-mode .timer-section h3 {
+    color: #58a6ff;
+}
+
+body.dark-mode .timer-display {
+    color: #58a6ff;
+}
+
+body.dark-mode #set-minutes {
+    background: #0d1117;
+    color: #c9d1d9;
+    border-color: #58a6ff;
+}

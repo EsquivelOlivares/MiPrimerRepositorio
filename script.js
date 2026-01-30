@@ -3,6 +3,11 @@ let count = 0;
 let totalClicks = 0;
 const maxClicks = 100;
 
+// Variables para el timer
+let timerInterval;
+let timeLeft = 5 * 60; // 5 minutos en segundos
+let isTimerRunning = false;
+
 // Elementos del DOM
 const countElement = document.getElementById('count');
 const historyElement = document.getElementById('history');
@@ -28,8 +33,72 @@ function toggleDarkMode() {
     // Animación
     animateButton(darkModeBtn);
 }
+
+// Funciones para el timer
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    
+    document.getElementById('minutes').textContent = 
+        minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = 
+        seconds.toString().padStart(2, '0');
+    
+    // Animación cuando queda poco tiempo
+    const timerDisplay = document.querySelector('.timer-display');
+    if (timeLeft <= 30) {
+        timerDisplay.classList.add('timer-alert');
+    } else {
+        timerDisplay.classList.remove('timer-alert');
+    }
+    
+    // Alarma cuando termina
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        document.title = "⏰ ¡Tiempo terminado!";
+        alert("¡Tiempo terminado! 🎉");
+    }
+}
+
+function startTimer() {
+    if (!isTimerRunning && timeLeft > 0) {
+        isTimerRunning = true;
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            document.title = `${Math.floor(timeLeft/60)}:${(timeLeft%60).toString().padStart(2,'0')} - Contador`;
+        }, 1000);
+    }
+}
+
+function pauseTimer() {
+    if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+    }
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    isTimerRunning = false;
+    const minutesInput = parseInt(document.getElementById('set-minutes').value) || 5;
+    timeLeft = minutesInput * 60;
+    updateTimerDisplay();
+    document.title = "Contador de Clicks";
+}
+
+function setTimerMinutes() {
+    if (!isTimerRunning) {
+        const minutes = parseInt(document.getElementById('set-minutes').value) || 5;
+        timeLeft = minutes * 60;
+        updateTimerDisplay();
+    }
+}
+
 // Inicializar la aplicación
 function init() {
+    updateTimerDisplay();
     updateDisplay();
     setupEventListeners();
 }
@@ -67,6 +136,12 @@ function setupEventListeners() {
     darkModeBtn.addEventListener('click', () => {
         toggleDarkMode();
     });
+
+    // Timer event listeners
+    document.getElementById('start-timer').addEventListener('click', startTimer);
+    document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+    document.getElementById('reset-timer').addEventListener('click', resetTimer);
+    document.getElementById('set-minutes').addEventListener('change', setTimerMinutes);
 }
 
 // Actualizar la pantalla
